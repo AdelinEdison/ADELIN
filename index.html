@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Valentine</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil&display=swap" rel="stylesheet">
 
-
 <style>
+
 body{
 margin:0;
 min-height:100vh;
 background:#ffd6e0;
 display:flex;
 justify-content:center;
-align-items:center;   /* CENTER START */
+align-items:center;
 overflow-y:auto;
 font-family:Arial;
 padding:40px 0;
@@ -23,22 +23,19 @@ padding:40px 0;
 
 .card{
 width:90%;
-box-sizing:border-box;
-}
-
-/* CARD */
-.card{
 background:white;
 padding:35px 45px;
 border-radius:18px;
 text-align:center;
 box-shadow:0 10px 25px rgba(0,0,0,.2);
 animation:floatCard 4s ease-in-out infinite;
-z-index:2;
 max-width:420px;
 }
 
-/* TEXTS */
+@keyframes floatCard{
+50%{transform:translateY(-8px);}
+}
+
 .love-text{
 font-family:'Great Vibes', cursive;
 font-size:34px;
@@ -52,65 +49,7 @@ font-size:30px;
 color:#c9184a;
 margin-top:20px;
 }
-.heart-nav{
-display:inline-block;
-margin-top:20px;
-background:#ff4d6d;
-color:white;
-border:none;
-padding:12px 34px;
-border-radius:30px;
-font-size:18px;
-cursor:pointer;
-box-shadow:0 6px 15px rgba(255,77,109,.4);
-transition:.3s;
-}
 
-.heart-nav:hover{
-transform:scale(1.05);
-}
-
-/* HEART ANIMATION */
-.heart{
-position:absolute;
-bottom:-40px;
-font-size:24px;
-color:#c9184a;
-opacity:0;
-animation:float 8s linear infinite;
-}
-
-.heart:nth-child(1){left:10%; animation-delay:0s;}
-.heart:nth-child(2){left:30%; animation-delay:2s;}
-.heart:nth-child(3){left:50%; animation-delay:4s;}
-.heart:nth-child(4){left:70%; animation-delay:6s;}
-.heart:nth-child(5){left:90%; animation-delay:8s;}
-
-@keyframes float{
-0%{transform:translateY(0) scale(.5);opacity:0;}
-10%{opacity:1;}
-100%{transform:translateY(-120vh) scale(1.2);opacity:0;}
-}
-
-/* GIFT */
-label{
-display:inline-block;
-margin-top:15px;
-padding:10px 25px;
-background:#ff4d6d;
-color:white;
-border-radius:25px;
-cursor:pointer;
-font-weight:bold;
-}
-
-#open{display:none;}
-.gift{display:none;}
-#open:checked ~ label{display:none;}
-#open:checked ~ .gift{display:block;}
-#open:checked ~ .love-text{display:none;}
-
-/* BUTTONS */
 .buttons{
 display:flex;
 justify-content:center;
@@ -126,219 +65,130 @@ border-radius:25px;
 cursor:pointer;
 }
 
-/* TAMIL STORY */
-.tamil-love{
-font-family:'Noto Serif Tamil', serif;
-font-size:18px;
-line-height:1.8;
-color:#b1124d;
-margin-bottom:15px;
-}
-
-.next-btn{
-background:#c9184a;
-color:white;
-border:none;
-padding:10px 26px;
-border-radius:25px;
-font-size:16px;
-cursor:pointer;
-}
-
 .no{
 position:relative;
-transition:left 0.6s ease, top 0.6s ease;
+transition:.6s;
 }
-.heart-nav{
+
+.glow-gift{
 margin-top:20px;
 background:#ff4d6d;
 color:white;
 border:none;
 padding:12px 34px;
 border-radius:30px;
-font-size:18px;
 cursor:pointer;
-box-shadow:0 6px 15px rgba(255,77,109,.4);
-transition:.3s;
 }
 
-.heart-nav:hover{
-transform:scale(1.05);
-box-shadow:0 10px 20px rgba(255,77,109,.6);
+.tamil-love{
+font-family:'Noto Serif Tamil', serif;
+font-size:18px;
+line-height:1.8;
+color:#b1124d;
 }
 
-.title{
-position:relative;
-text-align:center;
-font-size:26px;
-padding:0 35px;
-}
-
-.heart-left,
-.heart-right{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-}
-
-.heart-left{left:0;}
-.heart-right{right:0;}
-
-@keyframes floatCard{
-50%{transform:translateY(-8px);}
-}
-.surprise-btn{
-margin-top:25px;
-background:#7b2cbf;   /* purple vibe */
+.surprise-glow{
+margin-top:20px;
+background:#7b2cbf;
 color:white;
 border:none;
 padding:12px 32px;
 border-radius:30px;
-font-size:18px;
 cursor:pointer;
-box-shadow:0 6px 15px rgba(123,44,191,.4);
-transition:.3s;
 }
 
-.surprise-btn:hover{
-transform:scale(1.05);
-box-shadow:0 10px 20px rgba(123,44,191,.6);
-}
-@media(max-width:600px){
-
-.love-text{font-size:28px;}
-.question{font-size:24px;}
-.tamil-love{font-size:16px;}
-
+/* YES pulse */
+#yesBtn{
+animation:pulseYes 2s infinite;
 }
 
+@keyframes pulseYes{
+0%{transform:scale(1);}
+50%{transform:scale(1.15);}
+100%{transform:scale(1);}
+}
+
+.yesClicked{
+animation:yesPop .6s ease forwards;
+}
+
+@keyframes yesPop{
+0%{transform:scale(1);}
+60%{transform:scale(1.4);}
+100%{transform:scale(1);}
+}
 
 </style>
 </head>
 
 <body>
 
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
+<div class="card" id="firstPage">
 
-<div class="card">
-
-<h2 class="title">
-  <span class="heart-left">💖</span>
-  Happy Valentine’s Day Chlom...
-  <span class="heart-right">💖</span>
-</h2>
-
-
-
-<input type="checkbox" id="open">
+<h2>💖 Happy Valentine’s Day Chlom... 💖</h2>
 
 <p class="love-text">You walked into my life and made it beautiful.</p>
-</div>
 
-<label for="open">🎁 Open Gift</label>
+<button id="openGift" class="glow-gift">🎁 Open Gift</button>
 
 <div class="gift">
 
 <p class="question">
 Will you stay with me forever, with the same love in your heart?
 </p>
-</div>
 
 <div class="buttons">
 <span id="yesBtn">YES</span>
 <span class="no" id="noBtn">NO</span>
 </div>
 
-
 </div>
-<!-- END FIX -->
 
-<div id="secondStep">
+<div id="secondStep" style="display:none">
 
 <p class="love-text">
 You Became My Happiness…and showed the real meaning of love chlom!!!
 </p>
+
 </div>
 
-<button id="openGift" class="glow-gift">🎁 Open Gift</button>
-
-
-</div>  <!-- secondStep close -->
-
-<div id="story" style="display:none;margin-top:20px;">
+<div id="story" style="display:none">
 
 <p class="tamil-love">
-நாம் நேசிப்பவர் நம்மையும் நேசித்தால் அதை விட சந்தோஷம் வேறு எதுவும் இல்லை... 🙂<br>
-உயிராக இருப்பவர்களிடம் உரிமையாக இருப்பதை காட்டிலும் உண்மையாக இருப்பது தான் முக்கியம் ❤️‍🩹<br>
+நாம் நேசிப்பவர் நம்மையும் நேசித்தால் அதை விட சந்தோஷம் வேறு எதுவும் இல்லை...
 </p>
-</div>
-
 
 <button id="continueBtn" class="glow-gift">❤️ Continue</button>
 
 </div>
 
-<div id="tamilPage" style="display:none;margin-top:25px;">
+<div id="tamilPage" style="display:none">
 
-<p class="tamil-love"> நீ என் வாழ்க்கையில் வந்தது வரமா என்று கேட்டால், வரம் என்று தான் சொல்வேன்.<br> 
-  அனைவரும் திகைக்கும் அளவிற்கு உன்னிடமிருந்து காதல் வெளிப்படாமல் இருந்தாலும்,<br> 
-  நான் உன் அருகில் இருக்கும்போது திகைத்துப் போகிறேன்.<br> 
-  இந்த காதல் வாழ்க்கை முழுவதும் தொடரும்… எந்த மாற்றமும் இல்லை. </p>
-<p class="tamil-love"> “ஏன் உன்னை பிடிச்சது?”<br>
+<p class="tamil-love">
+நீ என் வாழ்க்கையில் வந்தது வரமா என்று கேட்டால், வரம் என்று தான் சொல்வேன்.
 </p>
-</div>
 
 <button id="tamilNext" class="glow-gift">அடுத்து ❤️</button>
 
 </div>
 
-<div id="tamilPage2" style="display:none;margin-top:25px;">
+<div id="tamilPage2" style="display:none">
 
-<p class="tamil-love">
-என் கடந்த காலங்களில் நான் மகிழ்ச்சியாக இருந்த நாட்கள் இருந்தது... 🧡<br>
-அதற்கு பிறகு தான் வாழ்க்கை என்னும் ஓர் உணர்வில் முதல் அடி வைக்கிறேன்... 💯<br>
-என் நண்பர்கள் உடன் சுற்றி நாட்களில் பெரிதும் உணரவில்லை அந்த தனிமை என்னும் உலகை... 🥀<br>
-நாட்களும் கடந்தது புதிய நபர் புதிய சந்திப்பு என்று தான் துவக்கத்தில் இருந்தது... 😵‍💫<br>
-அதில் என் நண்பர்கள் மற்றும் நான் பழகிய உறவுகள் என்னை சுற்றி நடந்த நிகழ்வுகள் அனைத்தும் ஓர் மாயம் அறிந்தேன்.... ❤️‍🩹<br>
-ஏதோ ஒரு வகையில் என்னை ஏமாற்றினார்... தோற்று தான் போகிறது என் கோபங்கள்
-உன் அன்பிற்கு முன்னால்<br>
-அந்த வலியில் இருந்து மீண்டு வருவதற்கு அதிக நேரம் எடுத்தது.. ☠️<br>
-அந்த தருணத்தில் அனைத்தையும் வெறுத்து எவர் மீதும் நம்பிக்கை அற்ற நிலை தான்... 👀<br>
-என் வலிகளை பகிரும் ஒரே வழி மன ஆறுதல் ஆக my mom தான்... 💨<br>
-நானும் என் தனிமை என்று இருந்த போது தான் நீ அறிமுகம் ஆனது.... 😌<br>
-உன் மீதும் நம்பிக்கை இல்லாமல் தான் பல மாதங்கள் கழிந்தது... 💯🙂<br>
-உன்னுடைய அனைத்து செயல்களையும் கவனித்தேன்... 👊<br>
-உன்னுடைய உறுதி தன்மை, நம்பிக்கை தன்மை நிறைந்த பேச்சு<br>
-இதனால் தான் என்னவோ உன்னை பிடிக்க காரணமாக இருந்திருக்கலாம்... 💯✨<br>
-அந்த நம்பிக்கையும் முதல் சந்திப்பிலேயே உடைந்தது,<br>
-காதல் என்றதும் காதலிக்கவில்லை... ❤️‍🩹<br>
-வாழ்நாள் முழுவதும் நீ என் வாழ்க்கை துணையாக வேண்டும் என்று தான் காதலிக்க தொடங்கினேன்... ❤️✨💯<br>
-புரிந்துக்கொள்ளும் வரை எதையும் ரசிக்கவில்லை புரிந்துக்கொண்டபின் உன்னை தவிர எதையும் ரசிக்கமுடியவில்லை...💯<br>
-நாங்கள் இருவரும் நிறைய சண்டையிட்டோம், ஆனால் அதற்குக் காரணம், என் வாழ்க்கையில் உன்னை இழந்துவிடுவோமோ என்ற பயம் மட்டுமே...🙂<br>
-நம்மை முழுவதும் புரிந்துக் கொண்ட ஒருவர் நம் வாழ்வில் இருப்பது நமக்கு கிடைத்த மிக பெரிய வரம்...<br>
-நீ என்னை விட்டு விலக நினைக்கும் அந்த நொடிக்கு முன் நீ நினைத்து பார்க்க முடியாத தூரத்திற்கு நான் சென்றிருப்பேன்...❤️<br>
-தோற்று தான் போகிறது என் கோபங்கள் உன் அன்பிற்கு முன்னால்...❤️‍🩹<br>
-என்னுடைய சிறு இதயத்தில் உன் மீது பெரிய காதல் இருப்பதற்கு காரணம் உன் அன்பு... I LOVE YOU CHLOM!!!    
-</p>
-
+<p class="tamil-love">I LOVE YOU CHLOM!!!</p>
 
 <button id="surpriseBtn2" class="surprise-glow">💜 Surprise</button>
 
-<div id="imgBox2" style="display:none;margin-top:20px;">
-<img src="My Girl.jpg" style="max-width:100%;border-radius:18px;">
+<div id="imgBox2" style="display:none;margin-top:15px">
+<img src="AR JPG.jpg" style="max-width:100%;border-radius:18px;">
 </div>
 
 </div>
+
+</div>
+
+<audio id="bgMusic" src="your-music.mp3"></audio>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
 var yes=document.getElementById("yesBtn");
 var no=document.getElementById("noBtn");
@@ -348,43 +198,30 @@ var openGift=document.getElementById("openGift");
 var story=document.getElementById("story");
 var continueBtn=document.getElementById("continueBtn");
 var tamilPage=document.getElementById("tamilPage");
-
-continueBtn.onclick=function(){
- story.style.display="none";
- tamilPage.style.display="block";
-};
+var tamilNext=document.getElementById("tamilNext");
+var tamilPage2=document.getElementById("tamilPage2");
+var surpriseBtn2=document.getElementById("surpriseBtn2");
+var imgBox2=document.getElementById("imgBox2");
 
 yes.onclick=function(){
 
+yes.classList.add("yesClicked");
+
 var music=document.getElementById("bgMusic");
-music.volume=0;          // start silent
-music.play().catch(()=>{});
-document.querySelectorAll(".audio-wave").forEach(function(w){
- w.style.display="flex";
-});
+music.volume=0;
+music.play();
 
-
-// fade in volume
+// fade in music
 var v=0;
-var fade=setInterval(()=>{
- v+=0.05;
- if(v>=1){
-   v=1;
-   clearInterval(fade);
- }
- music.volume=v;
+var fade=setInterval(function(){
+v+=0.05;
+if(v>=1){v=1;clearInterval(fade);}
+music.volume=v;
 },200);
 
-// page animation
-first.style.opacity="0";
-setTimeout(()=>{
- first.style.display="none";
- second.style.display="flex";
- second.style.opacity="1";
-},300);
-
+first.style.display="none";
+second.style.display="block";
 };
-
 
 no.onmousedown=function(e){
 e.preventDefault();
@@ -394,38 +231,23 @@ no.style.top=Math.random()*(window.innerHeight-40)+"px";
 };
 
 openGift.onclick=function(){
- second.style.display="none";
- story.style.display="block";
+story.style.display="block";
 };
 
-
-});
-
-var tamilNext=document.getElementById("tamilNext");
-
-tamilNext.onclick=function(){
- alert("AR JPG.jpg");
+continueBtn.onclick=function(){
+story.style.display="none";
+tamilPage.style.display="block";
 };
 
-var tamilNext=document.getElementById("tamilNext");
-var tamilPage=document.getElementById("tamilPage");
-var tamilPage2=document.getElementById("tamilPage2");
-var surpriseBtn2=document.getElementById("surpriseBtn2");
-var imgBox2=document.getElementById("imgBox2");
-
 tamilNext.onclick=function(){
- tamilPage.style.display="none";
- tamilPage2.style.display="block";
+tamilPage.style.display="none";
+tamilPage2.style.display="block";
 };
 
 surpriseBtn2.onclick=function(){
- imgBox2.style.display="block";
- imgBox2.scrollIntoView({behavior:"smooth",block:"center"});
+imgBox2.style.display="block";
+imgBox2.scrollIntoView({behavior:"smooth"});
 };
-document.getElementById("bgMusic").addEventListener("ended",function(){
- this.pause();
- this.currentTime=0;
-});
 
 </script>
 
